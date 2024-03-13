@@ -9,7 +9,7 @@ function Store() {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:5005/products/products'); 
+            const response = await axios.get('https://peak-threads.onrender.com/products/products'); 
 
             setProducts(response.data);
         } catch (error) {

@@ -62,7 +62,7 @@ const RegisterProduct = () => {
       };
 
       const response = await axios.post(
-        `http://localhost:5005/products/${userId}/register-products`,
+        `https://peak-threads.onrender.com/${userId}/register-products`,
         formData,
         config
       );

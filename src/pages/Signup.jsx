@@ -18,7 +18,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5005/auth/signup', {
+      await axios.post('https://peak-threads.onrender.com/auth/signup', {
         username,
         name,
         email,

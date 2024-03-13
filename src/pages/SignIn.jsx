@@ -16,7 +16,7 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5005/auth/login', { email, password });
+      const response = await axios.post('https://peak-threads.onrender.com/auth/login', { email, password });
       const { authToken, userId, isAdmin } = response.data;
       login(authToken, userId, isAdmin);
       navigate('/');

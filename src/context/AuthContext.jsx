@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
 
   const generateGuestToken = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5005/auth/generate-guest-token');
+      const { data } = await axios.get('https://peak-threads.onrender.com/auth/generate-guest-token');
       setAuthState((prevState) => ({
         ...prevState,
         token: data.guestToken,

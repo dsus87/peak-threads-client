@@ -26,7 +26,7 @@ function Account() {
     if (photo) formData.append('photo', photo);
 
     try {
-      await axios.put(`http://localhost:5005/auth/${userId}`, formData, {
+      await axios.put(`https://peak-threads.onrender.com/auth/${userId}`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`, // Include the token in the request header
         },
