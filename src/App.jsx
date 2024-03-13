@@ -14,6 +14,7 @@ import ProductDetailPage from './pages/ProductDetail';
 import SignIn from './pages/SignIn';
 import Account from './pages/Account';
 import SignUp from './pages/Signup';
+import Footer from './components/Footer';
 import OrderHistory from './pages/OrderHistory'
 import RegisterProduct from './pages/RegisterProduct';
 import { AuthProvider } from './context/AuthContext';
@@ -43,9 +44,10 @@ function App() {
             <Route path="auth/:_id" element={<Account />} />
             <Route path="register-product" element={<RegisterProduct />} />
             <Route path="all-orders" element={<OrderHistory />} />
-
+          
           </Routes>
          
+         <Footer> </Footer>
       </BrowserRouter>
     </Container>
     </CartProvider>

@@ -39,9 +39,9 @@ function Account() {
   };
 
   return (
-    <section style={{ height: '100vh' }}>
+    <section style={{ height: 'auto' }}>
       <Container className="py-5 h-100">
-        <Row className="d-flex justify-content-center align-items-center h-100">
+        <Row className="d-flex justify-content-center h-100">
           <Col xl={10}>
             <Card style={{ borderRadius: '1rem' }}>
               <Card.Body>
@@ -73,7 +73,7 @@ function Account() {
                     <Form.Control type="file" onChange={(e) => setPhoto(e.target.files[0])} />
                   </Form.Group>
 
-                  <Button variant="primary" type="submit" className="w-100">
+                  <Button variant="dark" type="submit" className="btn-lg btn-block" >
                     Update Profile
                   </Button>
                 </Form>
@@ -81,10 +81,32 @@ function Account() {
                   <Link to="/register-product">Register Product</Link>
                 </div>
               </Card.Body>
+            
+          
             </Card>
+
+            
+
           </Col>
+       
         </Row>
+      
       </Container>
+
+      <Container className="h-100">
+      <Row className="d-flex justify-content-center h-100">
+        <Col xl={10}>
+          <Card style={{ borderRadius: '1rem' }}>
+            <Card.Body>
+              <h2 className="text-center mb-4">Order History</h2>
+              
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+ 
+      
     </section>
   );
 }

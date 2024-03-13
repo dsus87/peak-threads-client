@@ -36,7 +36,7 @@ function SignUp() {
   return (
     <section style={{ height: '100vh' }}>
       <Container className="py-5 h-100">
-        <Row className="d-flex justify-content-center align-items-center h-100">
+        <Row className="d-flex justify-content-center h-100">
           <Col xl={10}>
             <Card style={{ borderRadius: '2rem' }}>
               <Row className="g-0">

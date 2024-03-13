@@ -39,7 +39,6 @@ function SignIn() {
                   <Card.Body className="p-4 p-lg-5 text-black">
                     <Form onSubmit={handleSubmit}>
                       <div className="d-flex align-items-center mb-3 pb-1">
-                        <i className="fas fa-cubes fa-2x me-3" style={{ color: '#ff6219' }}></i>
                         <span className="h1 fw-bold mb-0">Peak Threads</span>
                       </div>
 
