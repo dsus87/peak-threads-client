@@ -15,7 +15,7 @@ const OrderHistory = () => {
         const config = {
           headers: { Authorization: `Bearer ${token}` },
         };
-        const response = await axios.get('http://localhost:5005/order/all-orders', config);
+        const response = await axios.get('https://peak-threads.onrender.com/order/all-orders', config);
         console.log(response.data)
         setOrders(response.data);
       

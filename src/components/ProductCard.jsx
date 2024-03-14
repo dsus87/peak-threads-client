@@ -17,7 +17,7 @@ function ProductCard(props) {
          
 
 
-                <Link to={`/product/${product._id}`}> 
+                <Link to={`/products/${product._id}`}> 
                 <Card.Img variant="top" src={product.photo} alt={product.name} style={{ width: "100%", height: "auto" }} />
                 </Link>
 

@@ -20,8 +20,6 @@ import RegisterProduct from './pages/RegisterProduct';
 import { AuthProvider } from './context/AuthContext';
 
 
-//http://localhost:5173/ -> Home
-
 
 function App() {
 

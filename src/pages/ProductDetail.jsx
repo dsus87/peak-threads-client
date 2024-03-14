@@ -14,7 +14,7 @@ function ProductDetailPage() {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get(`https://peak-threads.onrender.com/${productId}`);
+        const response = await axios.get(`https://peak-threads.onrender.com/products/${productId}`);
         setProduct(response.data);
       } catch (err) {
         setError('Failed to fetch product details. Please try again later.');
