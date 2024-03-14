@@ -36,7 +36,7 @@ function App() {
             <Route index element={<Store/>} ></Route>
             <Route path = "success" element = {<Success/>} ></Route>
             <Route path = "cancel" element = {<Cancel/>} ></Route>
-            <Route path="product/:productId" element={<ProductDetailPage />} />
+            <Route path="products/:productId" element={<ProductDetailPage />} />
             <Route path="auth/login" element={<SignIn />} />
             <Route path="auth/signup" element={<SignUp />} />
             <Route path="auth/:_id" element={<Account />} />

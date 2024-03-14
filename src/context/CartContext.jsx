@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
 
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://peak-threads.netlify.app/products/products');
+                const response = await axios.get('https://peak-threads.onrender.com/products/products');
                 
                 const mappedProducts = response.data.map(product => ({    // Map through each product to ensure it has a proper 'id' field.
 

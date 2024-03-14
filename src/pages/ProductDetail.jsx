@@ -48,7 +48,7 @@ function ProductDetailPage() {
                 </Col>
                 <Col md={4} lg={4} className="d-flex align-items-center">
                   <Card.Body className="p-4 p-lg-5 text-black">
-                    <h1 className="fw-bold mb-0">{product.name}</h1>
+                    <h2 className="fw-bold mb-0">{product.name}</h2>
                     <br></br>
                     <p>{product.description}</p>
                     <p style={{ fontWeight: 'bold', fontSize: '2rem' }}>Price: €{product.price}</p>
