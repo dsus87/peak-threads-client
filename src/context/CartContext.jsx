@@ -112,8 +112,12 @@ export const CartProvider = ({ children }) => {
         );
     };
 
-    const deleteFromCart = (_id, size) => {
-        setItems(items => items.filter(item => !(item._id === _id && item.size === size)));
+    const deleteFromCart = (_id = null, size = null) => {
+        if (_id && size) {
+            setItems(items => items.filter(item => !(item._id === _id && item.size === size)));
+        } else {
+            setItems([]);
+        }
     };
 
     const getTotalCost = () => {

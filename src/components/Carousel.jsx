@@ -39,9 +39,9 @@ function MainCarousel() {
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3>Arc'teryx</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+           NO WASTED DAYS
           </p>
         </Carousel.Caption>
       </Carousel.Item>

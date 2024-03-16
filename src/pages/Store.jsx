@@ -24,28 +24,42 @@ function Store() {
     }, []); 
 
     return (
-        <>
-        
-            <MainCarousel> </MainCarousel>
+    
+<>
+  <div className="container">
+    <MainCarousel />
+  </div>
 
-            <div> 
-                <button onClick={() => setSelectedCategory('Outerwear')}>Outerwear</button>
-                <button onClick={() => setSelectedCategory('T-shirt')}>T-shirts</button>
-                <button onClick={() => setSelectedCategory('Shoes')}>Shoes</button>
-            </div>
+  <div className="container">
+    <div className="row pt-3">
+      <div className="col-4">
+        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('Outerwear')}>Outerwear</button>
+      </div>
+      <div className="col-4">
+        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('T-shirts')}>T-shirts</button>
+      </div>
 
+      <div className="col-4">
+        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('T-shirts')}>Shoes</button>
+      </div>
+      
+    </div>
+  </div>
 
-            <br></br>
-            <Row xs={1} md={3} className='g-1'>
-        {products
-            .filter(product => selectedCategory === '' || product.category === selectedCategory) 
-            .map((product, index) => (
-                <Col key={index} align="center">
-                    <ProductCard product={product}/>    
-                </Col>
-            ))}
+  <br />
+
+  <div className="container">
+    <Row xs={1} md={3} className="g-4">
+      {products
+        .filter(product => selectedCategory === '' || product.category === selectedCategory)
+        .map((product, index) => (
+          <Col key={index} align="center">
+            <ProductCard product={product}/>
+          </Col>
+        ))}
     </Row>
-        </>
+  </div>
+</>
     );
 }
 

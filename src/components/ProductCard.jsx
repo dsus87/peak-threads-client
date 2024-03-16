@@ -21,9 +21,9 @@ function ProductCard(props) {
                 <Card.Img variant="top" src={product.photo} alt={product.name} style={{ width: "100%", height: "auto" }} />
                 </Link>
 
-                <Card.Title>{product.name}</Card.Title>
+                <Card.Title style={{ paddingTop: "0.8rem" }}>{product.name}</Card.Title>
                 
-                <Card.Text>Price:€{product.price}</Card.Text>
+                <Card.Text>€{product.price}</Card.Text>
               
             </Card.Body>
         </Card>

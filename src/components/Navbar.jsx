@@ -57,20 +57,18 @@ function NavbarComponent() {
                     <Nav className="me-auto">
                         {isLoggedIn ? (
                             <>
-                                <Nav.Link as={Link} to="auth/profile">Account</Nav.Link>
-                                <Nav.Link as={Link} onClick={logout}>Sign Out</Nav.Link>
+                             <Nav.Link as={Link} to="auth/profile" style={{  fontSize: '1.3em' }}>Account</Nav.Link>
+                            <Nav.Link as={Link} to="/" onClick={logout} style={{  fontSize: '1.3em' }}>Sign Out</Nav.Link>
+
                             </>
                         ) : (
-                            <Nav.Link as={Link} to="/auth/login" className="btn btn-outline-primary mr-2">Sign In</Nav.Link>
+                            <Nav.Link as={Link} to="/auth/login"  style={{  fontSize: '1.3em' }}>Sign In</Nav.Link>
                         )}
                         
-                        {/* <Nav.Link as={Link} to="/outerwear">Outerwear</Nav.Link>
-                        <Nav.Link as={Link} to="/t-shirts">T-shirts</Nav.Link>
-                        <Nav.Link as={Link} to="/shoes">Shoes</Nav.Link> */}
-                     
+                    
                   
                     </Nav>
-                    <Button onClick={handleShow} className="ml-auto">Cart {productsCount} Items</Button>
+                    <Button onClick={handleShow} className="ml-auto btn-dark" style={{ fontSize: '1.3em', alignSelf: 'center' }}>Cart {productsCount} Items</Button>
                 </Navbar.Collapse>
             </Navbar>
 
@@ -86,9 +84,18 @@ function NavbarComponent() {
                                 <CartProduct key={`${item._id}-${item.size}`} _id={item._id} size={item.size} quantity={item.quantity} />
                             ))}
                             <h4>Total: €{cart.getTotalCost().toFixed(2)}</h4>
-                            <Button variant="success" onClick={checkout}>
-                                Purchase items!
-                            </Button>
+                            <>
+                                <div className="row">
+
+                                <div className="col">
+                                        <Button variant="success" onClick={checkout} className="mb-2 p-2 w-100">Purchase items</Button>
+                                    </div>
+                                    <div className="col">
+                                        <Button variant="danger" onClick={() => cart.deleteFromCart()} className="mb-2 p-2 w-100">Remove All Items</Button>
+                                    </div>
+                                
+                                </div>
+                            </>
                         </>
                     ) : (
                         <h5>There are no items in your cart.</h5>

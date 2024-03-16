@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Container, Row, Col, Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext'; 
 import { Link } from 'react-router-dom';
+import signup from '../assets/signup.png'
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -26,16 +27,18 @@ function SignIn() {
   }
 
   return (
-    <section >
+    <section style={{ height: '100vh' }}>
       <Container className="py-5 h-100">
-        <Row className="d-flex justify-content-center align-items-center h-100">
+        <Row className="d-flex justify-content-center h-100">
           <Col xl={10}>
-            <Card style={{ borderRadius: '1rem' }}>
+            <Card style={{ borderRadius: '2rem' }}>
               <Row className="g-0">
-                <Col md={6} lg={5} className="d-none d-md-block">
-              
+                {/* Image Column */}
+                <Col md={5} lg={5} className="d-none d-md-block">
+                  <img src={signup} alt="Login" style={{ width: "100%", height: "100%", borderRadius: '2rem 0 0 2rem' }} />
                 </Col>
-                <Col md={6} lg={7} className="d-flex align-items-center">
+                {/* Form Column */}
+                <Col md={7} lg={7} className="d-flex align-items-center">
                   <Card.Body className="p-4 p-lg-5 text-black">
                     <Form onSubmit={handleSubmit}>
                       <div className="d-flex align-items-center mb-3 pb-1">
@@ -46,13 +49,15 @@ function SignIn() {
 
                       {error && <Alert variant="danger">{error}</Alert>}
 
+                      {/* Email */}
                       <Form.Group className="form-outline mb-4">
-                        <Form.Control type="email" id="form2Example17" className="form-control form-control-lg" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                         <Form.Label>Email address</Form.Label>
                       </Form.Group>
 
+                      {/* Password */}
                       <Form.Group className="form-outline mb-4">
-                        <Form.Control type="password" id="form2Example27" className="form-control form-control-lg" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         <Form.Label>Password</Form.Label>
                       </Form.Group>
 
