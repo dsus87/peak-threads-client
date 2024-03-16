@@ -36,11 +36,11 @@ function Store() {
         <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('Outerwear')}>Outerwear</button>
       </div>
       <div className="col-4">
-        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('T-shirts')}>Shirts</button>
+        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('T-shirt')}>Shirts</button>
       </div>
 
       <div className="col-4">
-        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('T-shirts')}>Shoes</button>
+        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('Shoes')}>Shoes</button>
       </div>
       
     </div>
