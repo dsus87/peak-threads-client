@@ -28,7 +28,7 @@ const RegisterProduct = () => {
   const navigate = useNavigate();
 
   console.log("isAdmin before request:", isAdmin);
-
+  console.log("UserID", userId);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,19 +53,21 @@ const RegisterProduct = () => {
       formData.append('quantity[L]', quantityL);
       formData.append('photo', photo);
       formData.append('brand', brand);
-
+     
+      console.log('Form data:')
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`, // Include authorization token
-          'Content-Type': 'multipart/form-data', // Necessary for image upload
+          Authorization: `Bearer ${token}`, 
+          'Content-Type': 'multipart/form-data', 
         },
       };
 
       const response = await axios.post(
-        `https://peak-threads.onrender.com/${userId}/register-products`,
+        `https://peak-threads.onrender.com/products/register-products`,
         formData,
         config
       );
+      console.log('Axios config:', config);
 
       console.log(response.data);
       setIsLoading(false);

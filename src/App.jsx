@@ -18,10 +18,11 @@ import Footer from './components/Footer';
 import OrderHistory from './pages/OrderHistory'
 import RegisterProduct from './pages/RegisterProduct';
 import { AuthProvider } from './context/AuthContext';
+import EditProductPage from './pages/EditProductPage';
+import { useAuth } from './context/AuthContext';
 
 
-
-function App() {
+function App() {  
 
   return (
     <AuthProvider> 
@@ -39,9 +40,10 @@ function App() {
             <Route path="products/:productId" element={<ProductDetailPage />} />
             <Route path="auth/login" element={<SignIn />} />
             <Route path="auth/signup" element={<SignUp />} />
-            <Route path="auth/:_id" element={<Account />} />
+            <Route path={`auth/profile`} element={<Account />} />
             <Route path="register-product" element={<RegisterProduct />} />
-            <Route path="all-orders" element={<OrderHistory />} />
+            <Route path="orders/all-orders" element={<OrderHistory />} />
+            <Route path="update-products/:productId" element={<EditProductPage />} />
           
           </Routes>
          

@@ -3,13 +3,25 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { CartContext } from '../context/CartContext';
 import { Button, Form, Container, Row, Col, Card } from 'react-bootstrap';
+import { useAuth } from '../context/AuthContext'; // Importing the Auth context
+import { useNavigate } from 'react-router-dom'; 
+
+
 
 function ProductDetailPage() {
   const { productId } = useParams();
+  console.log("productId", productId);
   const [product, setProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState('');
   const [error, setError] = useState('');
   const cart = useContext(CartContext);
+  const navigate = useNavigate(); 
+
+
+  const {token, userId, isAdmin  } = useAuth(); 
+  console.log("isAdmin before request:", isAdmin);
+  console.log("UserID", userId);
+
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -35,6 +47,24 @@ function ProductDetailPage() {
 
   if (error) return <div>{error}</div>;
   if (!product) return <div>Loading...</div>;
+
+  const handleDeleteProduct = async () => {
+    if (window.confirm('Are you sure you want to delete this product?')) {
+      try {
+        await axios.delete(`https://peak-threads.onrender.com/products/delete-products/${productId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`        
+          },
+        });
+        alert('Product successfully deleted.');
+        navigate('/');
+
+      } catch (error) {
+        alert('Failed to delete the product.');
+        console.error(error);
+      }
+    }
+  };
 
   return (
     <section style={{ minHeight: '100vh' }}>
@@ -71,8 +101,10 @@ function ProductDetailPage() {
                         <p>Name: {product.sellerId.name}</p>
                       </div>
                     )} */}
-                    <Button variant="dark" onClick={handleAddToCart}>Add to Cart</Button>
-                  </Card.Body>
+ <Button variant="dark" onClick={handleAddToCart}>Add to Cart</Button>
+                    {isAdmin && (
+                      <Button variant="danger" onClick={handleDeleteProduct} style={{ marginLeft: '10px' }}>Delete Product</Button>
+                    )}                  </Card.Body>
                 </Col>
               </Row>
             </Card>

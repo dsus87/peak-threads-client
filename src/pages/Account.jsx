@@ -53,20 +53,20 @@ function Account() {
                     <Form.Control type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
                   </Form.Group>
                   
-                  <Form.Group className="mb-3">
+                  {/* <Form.Group className="mb-3">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                  </Form.Group>
+                  </Form.Group> */}
 
                   <Form.Group className="mb-3">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
                   </Form.Group>
-
+{/* 
                   <Form.Group className="mb-3">
                     <Form.Label>New Password (optional)</Form.Label>
                     <Form.Control type="password" placeholder="New Password" onChange={(e) => setPassword(e.target.value)} />
-                  </Form.Group>
+                  </Form.Group>     */}
 
                   <Form.Group className="mb-3">
                     <Form.Label>Photo (optional)</Form.Label>
@@ -77,9 +77,7 @@ function Account() {
                     Update Profile
                   </Button>
                 </Form>
-                <div className="mt-3 text-center">
-                  <Link to="/register-product">Register Product</Link>
-                </div>
+              
               </Card.Body>
             
           
@@ -95,16 +93,48 @@ function Account() {
 
       <Container className="h-100">
       <Row className="d-flex justify-content-center h-100">
-        <Col xl={10}>
+        <Col xl={5}>
+          <Card style={{ borderRadius: '1rem' }}>
+            <Card.Body>
+              <h2 className="text-center mb-4">Products</h2>
+
+              <div className="mt-3 text-center">
+                  <Link to="/register-product">Register Product</Link>
+                </div>
+
+                <div className="mt-3 text-center">
+                  <Link to="/update-products/:productId">Edit and Delete </Link>
+                </div>
+              
+            </Card.Body>
+
+
+            
+          </Card>
+
+        </Col>
+
+        <Col xl={5}>
           <Card style={{ borderRadius: '1rem' }}>
             <Card.Body>
               <h2 className="text-center mb-4">Order History</h2>
-              
+              <div className="mt-3 text-center">
+              <Link to="/orders/all-orders">Order History</Link>
+                </div>
             </Card.Body>
+
+
+            
           </Card>
+
         </Col>
+        
       </Row>
     </Container>
+    
+
+    
+    
  
       
     </section>

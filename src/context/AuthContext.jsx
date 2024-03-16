@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const token = localStorage.getItem('token') || '';
-    const userId = localStorage.getItem('userId') || '';
+    const  userId= localStorage.getItem('userId') || '';
     const isAdmin = localStorage.getItem('isAdmin') === 'true'; 
 
     return {

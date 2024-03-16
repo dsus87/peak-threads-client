@@ -8,7 +8,7 @@ import Peakthreads from '../assets/Peakthreads.svg';
 
 function NavbarComponent() {
     const cart = useContext(CartContext); // Access cart context and authentication context states and functions.
-    const { isLoggedIn, logout } = useAuth();
+    const { isLoggedIn, logout, userId  } = useAuth();
 
     // `show` state to control the visibility of the cart modal. It's initially set to false.
     const [show, setShow] = useState(false);
@@ -19,6 +19,9 @@ function NavbarComponent() {
 
     // Calculate the total number of items in the cart by summing up the quantities of all items.
     const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0);
+
+    let _id = userId;
+
 
     return (
         <>
@@ -31,7 +34,7 @@ function NavbarComponent() {
                     <Nav className="me-auto">
                         {isLoggedIn ? (
                             <>
-                                <Nav.Link as={Link} to="/auth/:_id">Account</Nav.Link>
+                                <Nav.Link as={Link} to="auth/profile">Account</Nav.Link>
                                 <Nav.Link as={Link} onClick={logout}>Sign Out</Nav.Link>
                             </>
                         ) : (
