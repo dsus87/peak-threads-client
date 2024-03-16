@@ -73,8 +73,9 @@ function ProductDetailPage() {
           <Col xl={12}>
             <Card style={{ borderRadius: '2rem' }}>
               <Row className="g-0">
-                <Col md={5} lg={8} className="d-none d-md-block">
-                  <img src={product.photo} alt={product.name} style={{ width: "90%", height: "auto", borderRadius: '2rem 0 0 2rem' }} />
+                <Col xs={12} md={5} lg={8} className=" order-md-0" >    
+
+                  <img src={product.photo} alt={product.name} style={{ width: "100%", height: "auto", borderRadius: '2rem 2rem 2rem 2rem' }} />
                 </Col>
                 <Col md={4} lg={4} className="d-flex align-items-center">
                   <Card.Body className="p-4 p-lg-5 text-black">
