@@ -15,6 +15,7 @@ const RegisterProduct = () => {
   const [category, setCategory] = useState('Outerwear');
   const [photo, setPhoto] = useState(null);
   const [brand, setBrand] = useState('');
+  const [stripeId, setStripeId] = useState('');
   const [quantityS, setQuantityS] = useState(0);
   const [quantityM, setQuantityM] = useState(0);
   const [quantityL, setQuantityL] = useState(0);
@@ -51,6 +52,7 @@ const RegisterProduct = () => {
       formData.append('quantity[S]', quantityS);
       formData.append('quantity[M]', quantityM);
       formData.append('quantity[L]', quantityL);
+      formData.append('stripeId', stripeId);
       formData.append('photo', photo);
       formData.append('brand', brand);
      
@@ -126,6 +128,11 @@ const RegisterProduct = () => {
                   <Form.Group className="mb-3">
                     <Form.Label>Brand:</Form.Label>
                     <Form.Control type="text" value={brand} onChange={(e) => setBrand(e.target.value)} required />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Stripe Id</Form.Label>
+                    <Form.Control type="text" value={stripeId} onChange={(e) => setStripeId(e.target.value)} required />
                   </Form.Group>
 
                   <Form.Group className="mb-3">
