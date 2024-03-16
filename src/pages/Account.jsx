@@ -13,8 +13,14 @@ function Account() {
   const [photo, setPhoto] = useState(null);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { token, userId } = useAuth(); // Access the token and userId from the context
+  const { token, userId, isAdmin } = useAuth();  // Access the token and userId from the context
 
+
+
+
+
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -93,19 +99,21 @@ function Account() {
 
       <Container className="h-100">
       <Row className="d-flex justify-content-center h-100">
+      {isAdmin && (
         <Col xl={5}>
           <Card style={{ borderRadius: '1rem' }}>
             <Card.Body>
+              
               <h2 className="text-center mb-4">Products</h2>
 
               <div className="mt-3 text-center">
                   <Link to="/register-product">Register Product</Link>
                 </div>
-
+{/* 
                 <div className="mt-3 text-center">
                   <Link to="/update-products/:productId">Edit and Delete </Link>
                 </div>
-              
+               */}
             </Card.Body>
 
 
@@ -113,6 +121,8 @@ function Account() {
           </Card>
 
         </Col>
+
+          )} 
 
         <Col xl={5}>
           <Card style={{ borderRadius: '1rem' }}>

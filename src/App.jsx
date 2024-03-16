@@ -22,6 +22,7 @@ import EditProductPage from './pages/EditProductPage';
 import { useAuth } from './context/AuthContext';
 
 
+
 function App() {  
 
   return (
@@ -30,7 +31,7 @@ function App() {
     <Container>
     <BrowserRouter>
    
-      <NavbarComponent> </NavbarComponent>
+      <NavbarComponent > </NavbarComponent>
 
    
           <Routes>

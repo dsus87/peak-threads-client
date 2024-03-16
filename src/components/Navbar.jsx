@@ -10,6 +10,8 @@ function NavbarComponent() {
     const cart = useContext(CartContext); // Access cart context and authentication context states and functions.
     const { isLoggedIn, logout, userId  } = useAuth();
 
+
+
     // `show` state to control the visibility of the cart modal. It's initially set to false.
     const [show, setShow] = useState(false);
 
@@ -41,9 +43,11 @@ function NavbarComponent() {
                             <Nav.Link as={Link} to="/auth/login" className="btn btn-outline-primary mr-2">Sign In</Nav.Link>
                         )}
                         
-                        <Nav.Link as={Link} to="/outerwear">Outerwear</Nav.Link>
+                        {/* <Nav.Link as={Link} to="/outerwear">Outerwear</Nav.Link>
                         <Nav.Link as={Link} to="/t-shirts">T-shirts</Nav.Link>
-                        <Nav.Link as={Link} to="/shoes">Shoes</Nav.Link>
+                        <Nav.Link as={Link} to="/shoes">Shoes</Nav.Link> */}
+                     
+                  
                     </Nav>
                     <Button onClick={handleShow} className="ml-auto">Cart {productsCount} Items</Button>
                 </Navbar.Collapse>

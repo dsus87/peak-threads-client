@@ -101,10 +101,12 @@ function ProductDetailPage() {
                         <p>Name: {product.sellerId.name}</p>
                       </div>
                     )} */}
- <Button variant="dark" onClick={handleAddToCart}>Add to Cart</Button>
+                      <Button variant="dark" onClick={handleAddToCart}>Add to Cart</Button>
                     {isAdmin && (
                       <Button variant="danger" onClick={handleDeleteProduct} style={{ marginLeft: '10px' }}>Delete Product</Button>
-                    )}                  </Card.Body>
+                    )}               
+                    
+                    </Card.Body>
                 </Col>
               </Row>
             </Card>
