@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { CartContext } from "../context/CartContext";
 
 function CartProduct(props) {
-    const { _id, size, quantity } = props;
+    const { _id, size, quantity, stripeId } = props;
     console.log(`CartProduct Props:`, props); // Debug: Log to confirm props include size
 
     const cart = useContext(CartContext);

@@ -11,22 +11,26 @@ function NavbarComponent() {
     const cart = useContext(CartContext); // Access cart context and authentication context states and functions.
     const { isLoggedIn, logout, userId  } = useAuth();
 
-
     const checkout = async () => {
+        const checkoutItems = cart.items.map(item => ({
+            stripeId: item.stripeId,
+            quantity: item.quantity
+        }));
+    
         await fetch('https://peak-threads.onrender.com/checkout/checkout', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({items: cart.items})
-        }).then((response) => {
-            return response.json();
-        }).then((response) => {
+            body: JSON.stringify({items: checkoutItems})
+        })
+        .then(response => response.json())
+        .then(response => {
             if(response.url) {
                 window.location.assign(response.url); // Forwarding user to Stripe
             }
-        });
-    }
+        }).catch(error => console.error("Checkout Error:", error));
+    };
 
 
     // `show` state to control the visibility of the cart modal. It's initially set to false.

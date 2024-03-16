@@ -83,7 +83,12 @@ export const CartProvider = ({ children }) => {
     
         if (currentQuantityInCart < availableStock) {
             if (!productInCart) {
-                setItems(prevItems => [...prevItems, { _id: _id, size: size, quantity: 1 }]);
+                setItems(prevItems => [...prevItems, { 
+                    _id: _id, 
+                    size: size, 
+                    quantity: 1,
+                    stripeId: stripeId  
+                }]);
             } else {
                 setItems(items => 
                     items.map(item =>
