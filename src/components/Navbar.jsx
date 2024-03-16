@@ -82,7 +82,9 @@ function NavbarComponent() {
                                 <CartProduct key={`${item._id}-${item.size}`} _id={item._id} size={item.size} quantity={item.quantity} />
                             ))}
                             <h4>Total: €{cart.getTotalCost().toFixed(2)}</h4>
-                            <Button variant="success">Purchase Items!</Button>
+                            <Button variant="success" onClick={checkout}>
+                                Purchase items!
+                            </Button>
                         </>
                     ) : (
                         <h5>There are no items in your cart.</h5>
