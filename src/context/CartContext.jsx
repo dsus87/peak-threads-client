@@ -75,9 +75,9 @@ export const CartProvider = ({ children }) => {
             return;
         }
     
-        // Assuming stock levels are in the 'quantity' field of the productInStock,
-        // and they are keyed by size (e.g., productInStock.quantity['M'] for medium)
         const availableStock = productInStock.quantity[size];
+        // Correctly extracting stripeId from productInStock
+        const { stripeId } = productInStock; // Assuming productInStock contains a stripeId field
     
         const currentQuantityInCart = productInCart ? productInCart.quantity : 0;
     
@@ -87,7 +87,7 @@ export const CartProvider = ({ children }) => {
                     _id: _id, 
                     size: size, 
                     quantity: 1,
-                    stripeId: stripeId  
+                    stripeId  // Using the extracted stripeId
                 }]);
             } else {
                 setItems(items => 
@@ -97,7 +97,6 @@ export const CartProvider = ({ children }) => {
                 );
             }
         } else {
-            // Optionally notify the user that no more stock is available for this product size
             console.error("No more stock available for this product size");
         }
     };
