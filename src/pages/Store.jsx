@@ -33,8 +33,9 @@ function Store() {
   <div className="container">
     <div className="row pt-3">
       <div className="col-4">
-        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('Outerwear')}>Outerwear</button>
-      </div>
+      <button className="btn btn-dark w-100 btn-lg font-weight-bold" 
+        onClick={() => setSelectedCategory('Outerwear')}>Layers</button>
+               </div>
       <div className="col-4">
         <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('T-shirt')}>Shirts</button>
       </div>
