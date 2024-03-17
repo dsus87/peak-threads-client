@@ -68,7 +68,7 @@ function NavbarComponent() {
                     
                   
                     </Nav>
-                    <Button onClick={handleShow} className="ml-auto btn-dark" style={{ fontSize: '1.3em', alignSelf: 'center' }}>Cart {productsCount} Items</Button>
+                    <Button onClick={handleShow} className="ml-auto btn-dark" style={{  fontSize: '1.3em' }}>Cart {productsCount} Items</Button>
                 </Navbar.Collapse>
             </Navbar>
 
