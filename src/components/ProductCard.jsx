@@ -23,7 +23,7 @@ function ProductCard(props) {
 
                 <Card.Title style={{ paddingTop: "0.8rem" }}>{product.name}</Card.Title>
                 
-                <Card.Text>€{product.price}</Card.Text>
+                <Card.Text>{product.price} €</Card.Text>
               
             </Card.Body>
         </Card>

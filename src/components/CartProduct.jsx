@@ -15,7 +15,7 @@ function CartProduct(props) {
         <>
             <h3>{productData.name}</h3>
             <p>{quantity} total</p>
-            <p>€{(quantity * productData.price).toFixed(2)}</p>
+            <p>{(quantity * productData.price).toFixed(2)} €</p>
             <Button size="sm" onClick={() => cart.removeOneFromCart(_id, size)}>Remove</Button>
             <hr />
         </>

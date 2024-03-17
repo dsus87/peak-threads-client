@@ -82,7 +82,7 @@ function ProductDetailPage() {
                     <h2 className="fw-bold mb-0">{product.name}</h2>
                     <br></br>
                     <p>{product.description}</p>
-                    <p style={{ fontWeight: 'bold', fontSize: '2rem' }}>Price: €{product.price}</p>
+                    <p style={{ fontWeight: 'bold', fontSize: '2rem' }}>{product.price} €</p>
 
                     <Form.Group as={Row} className="mb-3" controlId="sizeSelect">
                       <Form.Label column sm={2}>Size</Form.Label>
