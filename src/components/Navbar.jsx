@@ -91,7 +91,7 @@ function NavbarComponent() {
                                         <Button variant="success" onClick={checkout} className="mb-2 p-2 w-100">Purchase items</Button>
                                     </div>
                                     <div className="col">
-                                        <Button variant="danger" onClick={() => cart.deleteFromCart()} className="mb-2 p-2 w-100">Remove All Items</Button>
+                                        <Button variant="danger" onClick={() => cart.deleteFromCart()} className="mb-2 p-2 w-100">Empty Cart</Button>
                                     </div>
                                 
                                 </div>

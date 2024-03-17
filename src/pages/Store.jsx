@@ -40,7 +40,7 @@ function Store() {
       </div>
 
       <div className="col-4">
-        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('Shoes')}>Shoes</button>
+        <button className="btn btn-dark w-100 btn-lg  font-weight-bold" onClick={() => setSelectedCategory('Shorts')}>Shorts</button>
       </div>
       
     </div>

@@ -119,7 +119,7 @@ const RegisterProduct = () => {
                   <Form.Group className="mb-3">
                     <Form.Label>Category:</Form.Label>
                     <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
-                      <option value="Shoes">Shoes</option>
+                      <option value="Shorts">Shorts</option>
                       <option value="T-shirt">T-shirt</option>
                       <option value="Outerwear">Outerwear</option>
                     </Form.Select>
