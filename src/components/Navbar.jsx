@@ -5,6 +5,7 @@ import CartProduct from '../components/CartProduct';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Peakthreads from '../assets/Peakthreads.svg';
+import PTlogo from '../assets/PTlogo.png'
 import { useNavigate } from 'react-router-dom'; 
 
 function NavbarComponent() {
@@ -50,7 +51,7 @@ function NavbarComponent() {
         <>
             <Navbar expand="lg" bg="white">
                 <Navbar.Brand style={{ padding: '10px 10px 10px' }} href="/">
-                    <img src={Peakthreads} style={{ width: '50px', height: '50px' }} alt="Peakthreads" />
+                    <img src={PTlogo} style={{ width: 'auto', height: '80px' }} alt="Peakthreads" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
