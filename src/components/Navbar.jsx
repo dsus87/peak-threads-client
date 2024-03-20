@@ -10,18 +10,40 @@ import { useNavigate } from 'react-router-dom';
 
 function NavbarComponent() {
     const cart = useContext(CartContext); // Access cart context and authentication context states and functions.
-    const { isLoggedIn, logout, userId  } = useAuth();
+    const { isLoggedIn, logout, userId, token  } = useAuth();
 
     const checkout = async () => {
         const checkoutItems = cart.items.map(item => ({
             stripeId: item.stripeId,
-            quantity: item.quantity
+            quantity: item.quantity,
+            size: item.size,
+
         }));
+
+
+    const totalPrice = cart.getTotalCost(); 
+
+        // Construct the order object
+        const orderData = {
+            items: cartItems,
+            totalPrice,
+            paymentMethod: 'Credit Card', // Place holder
+            shippingDetails: {
+                name: 'test ',  
+                address: '7 test st at trial and error ',
+                city: 'Berlin'
+            }
+        };
+
+     
+
+
     
         await fetch('https://peak-threads.onrender.com/checkout/checkout', {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({items: checkoutItems})
         })
