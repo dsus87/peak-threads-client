@@ -16,10 +16,11 @@ function Footer() {
             <a href="https://github.com/dsus87" style={{ color: 'black', fontSize: 20 }}>
               GitHub   
             </a>
-            <br></br>
+      
          
 
-            <p style={{ color: 'black', fontSize: 16 }}>This site is built using the MERN stack (MongoDB, Express. js, React, and Node. js, is) for educational purposes only.</p>
+            <p style={{ color: 'black', fontSize: 16 }}>This site is developed using the MERN stack (MongoDB, Express. js, React, and Node. js, is). 
+           Intended for for educational purposes only.</p>
           </div>
         </div>
       </div>
