@@ -9,6 +9,8 @@ import PTlogo from '../assets/PTlogo.png'
 import { useNavigate } from 'react-router-dom'; 
 
 function NavbarComponent() {
+    const navigate = useNavigate(); 
+
     const cart = useContext(CartContext); // Access cart context and authentication context states and functions.
     const { isLoggedIn, logout, userId, token  } = useAuth();
 
