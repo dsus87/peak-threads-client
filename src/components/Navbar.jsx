@@ -13,52 +13,27 @@ function NavbarComponent() {
     const { isLoggedIn, logout, userId, token  } = useAuth();
 
     const checkout = async () => {
-        console.log(cart); 
-        const checkoutItems = cart.items.map(item => ({
-            stripeId: item.stripeId,
-            quantity: item.quantity,
-            size: item.size,
-            name: item.name,
-            price: item.price
-
+        const items = cart.items.map(item => ({
+            price: item.stripeId, 
+            quantity: item.quantity
         }));
-
-
-    const totalPrice = cart.getTotalCost(); 
-
-        // Construct the order object
-        const orderData = {
-            items: checkoutItems,
-            totalPrice,
-            paymentMethod: 'Credit Card', // Place holder
-            shippingDetails: {
-                name: 'test ',  
-                address: '7 test st at trial and error ',
-                city: 'Berlin'
-            }
-        };
-
-    
-
-    
-        await fetch('https://peak-threads.onrender.com/checkout/checkout', {
+        await fetch('https://peak-threads.onrender.com/checkout', {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                items: checkoutItems,
-                totalPrice
-            })
-        })
-        .then(response => response.json())
-        .then(response => {
+            body: JSON.stringify(
+                {items: cart.items,
+                    totalPrice: cart.getTotalCost(),
+                })
+        }).then((response) => {
+            return response.json();
+        }).then((response) => {
             if(response.url) {
                 window.location.assign(response.url); // Forwarding user to Stripe
             }
-        }).catch(error => console.error("Checkout Error:", error));
-    };
+        });
+    }
 
 
     // `show` state to control the visibility of the cart modal. It's initially set to false.
