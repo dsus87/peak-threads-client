@@ -13,10 +13,13 @@ function NavbarComponent() {
     const { isLoggedIn, logout, userId, token  } = useAuth();
 
     const checkout = async () => {
+        console.log(cart); 
         const checkoutItems = cart.items.map(item => ({
             stripeId: item.stripeId,
             quantity: item.quantity,
             size: item.size,
+            name: item.name,
+            price: item.price
 
         }));
 
@@ -25,7 +28,7 @@ function NavbarComponent() {
 
         // Construct the order object
         const orderData = {
-            items: cartItems,
+            items: checkoutItems,
             totalPrice,
             paymentMethod: 'Credit Card', // Place holder
             shippingDetails: {
@@ -35,8 +38,7 @@ function NavbarComponent() {
             }
         };
 
-     
-
+    
 
     
         await fetch('https://peak-threads.onrender.com/checkout/checkout', {
@@ -45,7 +47,10 @@ function NavbarComponent() {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({items: checkoutItems})
+            body: JSON.stringify({
+                items: checkoutItems,
+                totalPrice
+            })
         })
         .then(response => response.json())
         .then(response => {
