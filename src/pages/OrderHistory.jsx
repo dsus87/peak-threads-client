@@ -41,19 +41,19 @@ const OrderHistory = () => {
       ) : (
         orders.map(order => (
           <div key={order._id} style={{ marginBottom: '20px' }}>
-            <p>Order Number: {order._id}</p>
+            <h4>Order Number: {order._id}</h4>
             <p>Order Date: {new Date(order.orderDate).toLocaleDateString()}</p>
             
-            <p>Total Price: ${order.totalPrice}</p>
+            <p>Total Price: € {order.totalCost}</p>
             <p>Status: {order.status}</p>
             <div>
-              <h4>Products:</h4>
+              <p>Products:</p>
               <ul>
-                {order.products.map(product => (
-                  <li key={product.productId}>
-                    Name {product.name}, 
-                    Quantity: {product.quantity}, 
-                    Size: {product.size}, 
+              {order.items.map((item, index) => ( 
+                  <li key={index}> 
+                    Product ID: {item._id}, 
+                    Quantity: {item.quantity}, 
+                    Price: € {item.price},
                   </li>
                 ))}
               </ul>

@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import Peakthreads from '../assets/Peakthreads.svg';
 import PTlogo from '../assets/PTlogo.png'
 import { useNavigate } from 'react-router-dom'; 
+import axios from 'axios';
 
 function NavbarComponent() {
     const navigate = useNavigate(); 
@@ -14,28 +15,74 @@ function NavbarComponent() {
     const cart = useContext(CartContext); // Access cart context and authentication context states and functions.
     const { isLoggedIn, logout, userId, token  } = useAuth();
 
+
     const checkout = async () => {
-        const items = cart.items.map(item => ({
-            price: item.stripeId, 
-            quantity: item.quantity
-        }));
-        await fetch('https://peak-threads.onrender.com/checkout', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(
-                {items: cart.items,
-                    totalPrice: cart.getTotalCost(),
-                })
-        }).then((response) => {
-            return response.json();
-        }).then((response) => {
-            if(response.url) {
-                window.location.assign(response.url); // Forwarding user to Stripe
+        let checkoutToken; 
+        
+        if (isLoggedIn) {
+            checkoutToken = token; 
+        } else {
+            const existingGuestToken = localStorage.getItem('guestToken');
+            if (!existingGuestToken) {
+                try {
+                    const { data } = await axios.get('https://peak-threads.onrender.com/auth/generate-guest-token');
+                    localStorage.setItem('guestToken', data.guestToken);
+                    checkoutToken = data.guestToken;
+                } catch (error) {
+                    console.error("Failed to generate guest token:", error);
+                    return; 
+                }
+            } else {
+                checkoutToken = existingGuestToken; 
             }
+        }
+    
+        // Prepare items in the format expected by the backend
+        const itemsForCheckout = cart.items.map(item => {
+            const productData = cart.getProductData(item._id); // Ensure this function correctly retrieves product data
+            return {
+                product: item._id, // Use the product's _id from the cart item
+                stripeId: item.stripeId,
+                quantity: item.quantity,
+                price: productData.price, // Assuming productData correctly includes the price
+            };
         });
-    }
+    
+        const totalCost = cart.getTotalCost();
+    
+        // Log the request payload for debugging
+        console.log('Checkout request payload:', {
+            user: isLoggedIn ? userId : null, // Send userId only if logged in, null otherwise
+            guestToken: !isLoggedIn ? checkoutToken : null, // Send guestToken only if not logged in
+            items: itemsForCheckout,
+            totalCost: totalCost,
+        });
+    
+        // Attempt to perform the checkout operation
+        try {
+            const response = await axios.post('https://peak-threads.onrender.com/checkout', {
+                user: isLoggedIn ? userId : null, // Conditionally include the user ID
+                guestToken: !isLoggedIn ? checkoutToken : null, // Include the guestToken for guests
+                items: itemsForCheckout,
+                totalCost: totalCost,
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${checkoutToken}` // Use the determined token for the request
+                }
+            });
+    
+            if (response.data.url) {
+                // Forwarding user to Stripe for payment
+                window.location.assign(response.data.url);
+            }
+        } catch (error) {
+            console.error("Checkout failed:", error);
+            // Handle checkout failure appropriately
+        }
+    };
+
+
 
 
     // `show` state to control the visibility of the cart modal. It's initially set to false.

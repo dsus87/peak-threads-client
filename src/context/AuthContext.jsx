@@ -27,6 +27,8 @@ export const AuthProvider = ({ children }) => {
   }, [authState.isLoggedIn, authState.isGuest]);
 
   const login = (userToken, userId, isAdmin) => {
+
+    
     setAuthState({ 
       isLoggedIn: true, 
       token: userToken, 
@@ -34,13 +36,14 @@ export const AuthProvider = ({ children }) => {
       isAdmin,
       isGuest: false 
       
+      
       });
     
     localStorage.setItem('isLoggedIn', 'true'); // Set Log in state
     localStorage.setItem('token', userToken); // Store the authToken
     localStorage.setItem('userId', userId); // Store the userId
     localStorage.setItem('isAdmin', isAdmin.toString()); // Ensure isAdmin is stored as a string
-
+    return Promise.resolve(userToken); 
   };
 
 
