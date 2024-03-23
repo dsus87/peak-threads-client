@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext'; 
+import { Table } from 'react-bootstrap';
+
+
+
+
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,34 +40,54 @@ const OrderHistory = () => {
 
   return (
     <div>
-      <h2>Order History</h2>
-      {orders.length === 0 ? (
+       
+<h2 style={{ textAlign: 'center', padding: '50px' }}>Order History</h2>      {orders.length === 0 ? (
         <p>No orders found.</p>
       ) : (
-        orders.map(order => (
-          <div key={order._id} style={{ marginBottom: '20px' }}>
-            <h4>Order Number: {order._id}</h4>
-            <p>Order Date: {new Date(order.orderDate).toLocaleDateString()}</p>
-            
-            <p>Total Price: € {order.totalCost}</p>
-            <p>Status: {order.status}</p>
-            <div>
-              <p>Products:</p>
-              <ul>
-              {order.items.map((item, index) => ( 
-                  <li key={index}> 
-                    Product ID: {item._id}, 
-                    Quantity: {item.quantity}, 
-                    Price: € {item.price},
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Order Number</th>
+              <th>Order Date</th>
+              <th>Total Price</th>
+              <th>Status</th>
+              <th>Products (ID, Quantity, Price)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map(order => (
+              <tr key={order._id}>
+                <td>{order._id}</td>
+                <td>{new Date(order.orderDate).toLocaleDateString()}</td>
+                <td>€{order.totalCost}</td>
+                <td>{order.status}</td>
+                <td>
+                  {order.items.map((item, index) => (
+                    <div key={index}>
+                      Product ID: {item._id}, Quantity: {item.quantity}, Price: €{item.price}
+                      {index < order.items.length - 1 ? '; ' : ''}
+                    </div>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      
+
+        
       )}
+     
+  
+
+
+
     </div>
+
+    
   );
+
+  
 };
 
 export default OrderHistory;
