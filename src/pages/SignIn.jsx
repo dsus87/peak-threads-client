@@ -64,7 +64,6 @@ function SignIn() {
                       <Button variant="dark" type="submit" className="btn-lg btn-block">Login</Button>
 
                       <div className="mt-4">
-                        <Link to="#!" className="small text-muted">Forgot password?</Link>
                         <p className="mb-5 pb-lg-2" style={{ color: '#393f81' }}>Don't have an account? <Link to="/auth/signup" style={{ color: '#393f81' }}>Register here</Link></p>
                       </div>
                     </Form>

@@ -61,10 +61,10 @@ function SignUp() {
                         <Form.Label>Username</Form.Label>
                       </Form.Group>
                       {/* Name */}
-                      {/* <Form.Group className="form-outline mb-4">
+                      <Form.Group className="form-outline mb-4">
                         <Form.Control type="text"  value={name} onChange={(e) => setName(e.target.value)} required />
                         <Form.Label>Name</Form.Label>
-                      </Form.Group> */}
+                      </Form.Group>
                       {/* Email */}
                       <Form.Group className="form-outline mb-4">
                         <Form.Control type="email"  value={email} onChange={(e) => setEmail(e.target.value)} required />
